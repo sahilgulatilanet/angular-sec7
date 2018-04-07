@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <button class="btn btn-success" (click)="oddonly=!oddonly">Dislay Odd</button>
+  </div>
+  <div class="row" *ngIf="oddonly">
+    <ul class="list-group">
+      <li *ngFor="let o of odd" class="list-group-item"
+      [ngClass]="{odd:o % 2 !==0}"
+      [ngStyle]="{background:'red'}">{{o}}</li>
+    </ul>
+  </div>
+  <div class="row" *ngIf="!oddonly">
+    <ul class="list-group">
+      <li *ngFor="let e of even" class="list-group-item">{{e}}</li>
+    </ul>
+  </div>
+  <div class="row" *appUnless="oddonly">
+    <ul class="list-group">
+      <li *ngFor="let o of odd" class="list-group-item"
+          [ngClass]="{odd:o % 2 !==0}"
+          [ngStyle]="{background:'red'}">{{o}}</li>
+    </ul>
+  </div>
+  <p appBasicHighLight>Basic highlight directives</p>
+  <p appBetterHighlight [defaultColor]="'yellow'" [highLightColor]="'red'">Basic highlight directives</p>
+  <div [ngSwitch]="value">
+    <p *ngSwitchCase="5">5</p>
+    <p *ngSwitchCase="10">10</p>
+    <p *ngSwitchDefault>dosent match</p>
+  </div>
+</div>
